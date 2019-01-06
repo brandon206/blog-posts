@@ -10,6 +10,6 @@ export const fetchPosts = () => async dispatch => {
     const resp = await axios.get(`${BASE_URL}/posts`);
     dispatch({
         type: types.FETCH_POSTS,
-        payload: resp
+        payload: resp.data
     })
 };
