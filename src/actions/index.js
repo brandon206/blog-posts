@@ -13,3 +13,13 @@ export const fetchPosts = () => async dispatch => {
         payload: resp.data
     })
 };
+
+// id = the id of the user we want to fetch
+export const fetchUser = (id) => async dispatch => {
+    const resp = await axios.get(`${BASE_URL}/users/${id}`);
+    dispatch({
+        // fetching one user at a time so using USER
+        type: types.FETCH_USER,
+        payload: resp.data
+    })
+}
