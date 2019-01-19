@@ -8,7 +8,6 @@ class UserHeader extends Component {
         this.props.fetchUser(this.props.userID);
     }
     render () {
-        console.log("this is props: ", this.props);
         const { user } = this.props;
 
         if(!user){

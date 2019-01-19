@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
 import UserHeader from './UserHeader';
-import { fetchPosts } from '../actions';
+import { fetchPostsAndUsers } from '../actions';
 
 class PostList extends Component {
 
     componentDidMount () {
-        this.props.fetchPosts();
+        this.props.fetchPostsAndUsers();
     }
 
     renderList () {
@@ -30,7 +30,6 @@ class PostList extends Component {
     }
 
     render () {
-        console.log("this.props.posts: ", this.props.posts);
         return (
             <div>{this.renderList()}</div>
         );
@@ -38,12 +37,11 @@ class PostList extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log("this is state: ", state);
     // has the property posts from the rootReducer
     return { posts: state.posts }
 }
 
 export default connect (mapStateToProps,{
     //pass in action creator
-    fetchPosts
+    fetchPostsAndUsers
 })(PostList);

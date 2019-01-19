@@ -5,6 +5,15 @@ import types from './types';
 const BASE_URL = 'https://jsonplaceholder.typicode.com';
 const API_KEY = '?key=brandoniscoding';
 
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+    //when calling an action creator inside of an action creator
+    //need to call dispatch because it's returning a function, redux thunk
+    //immediately calls this function, AWAIT waits for the get request to be completed
+    await dispatch(fetchPosts());
+    //this gets the value inside of the posts reducer
+    console.log(getState().posts);
+}
+
 //function that returns a function
 export const fetchPosts = () => async dispatch => {
     const resp = await axios.get(`${BASE_URL}/posts`);
